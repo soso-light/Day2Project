@@ -30,4 +30,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="사용자 정의 대화상자" />
+
+    <Button
+        android:onClick="showDatePicker"
+        android:id="@+id/btnDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="date" />
 </LinearLayout>

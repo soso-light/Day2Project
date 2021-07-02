@@ -1,17 +1,22 @@
 package com.example.day2project;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class DialogActivity2 extends AppCompatActivity implements View.OnClickListener {
-    Button b1, b2, b3, b4;
+public class DialogActivity2 extends AppCompatActivity implements View.OnClickListener{
+    Button b1, b2, b3, b4, bd;
     int selectedMenu = 0;
     String[] menu = {"치킨", "피자", "스파게티"};
     boolean[] checked = {true, true, false};  //기본값 설정
@@ -139,5 +144,18 @@ public class DialogActivity2 extends AppCompatActivity implements View.OnClickLi
     private void displayToast(String s) {
         if(s == null) Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
         Toast.makeText(this, s , Toast.LENGTH_SHORT).show();
+    }
+
+    public void showDatePicker(View view) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    public void processDatePickerResult(int year, int month, int day){
+        String month_string = Integer.toString(month+1);
+        String day_string = Integer.toString(day);
+        String year_string = Integer.toString(year);
+        String dateMessage = (month_string + "/" + day_string + "/" + year_string);
+        Toast.makeText(this, "Date : " + dateMessage, Toast.LENGTH_SHORT).show();
     }
 }
